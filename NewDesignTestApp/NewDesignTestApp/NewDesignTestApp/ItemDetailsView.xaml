@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:carousel="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
+             xmlns:ins="clr-namespace:NewDesignTestApp.CustomControls"
+             x:Class="NewDesignTestApp.ItemDetailsView"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="True"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="grdLabel" TargetType="Label">
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="VerticalTextAlignment"  Value="Center" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="#908F8F" />
+                <Setter Property="Grid.Row" Value="0" />
+            </Style>
+
+            <Style x:Key="innerGrid" TargetType="Grid">
+                <Setter Property="Grid.Column" Value="0" />
+                <Setter Property="VerticalOptions" Value="FillAndExpand" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="BackgroundColor" Value="White" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <!--NAvigation Bar-->
+        <Grid HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand" RowSpacing="0" ColumnSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Row="0" Grid.Column="0" Padding="10,0"
+                  HorizontalOptions="FillAndExpand" BackgroundColor="#14B7F8" 
+                  VerticalOptions="StartAndExpand" RowSpacing="0" ColumnSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="30"/>
+                </Grid.ColumnDefinitions>
+                <Image Grid.Row="0" Grid.Column="0" Source="{StaticResource back}" Style="{StaticResource menuImage}">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer  />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label Grid.Row="0" Grid.Column="1" Text="SPORT SHOWS"  Style="{StaticResource navBarTitle}"/>
+                <Image Grid.Row="0" Grid.Column="2" Source="share.png" Style="{StaticResource menuImage}">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer  />
+                    </Image.GestureRecognizers>
+                </Image>
+            </Grid>
+            <!--NAvigation Bar-->
+
+            <Grid RowSpacing="0" Grid.Row="1" Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="200"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <carousel:CarouselViewControl x:Name="carousel" Grid.Row="0" Grid.Column="0"
+                                          ItemsSource="{Binding TutorialItems}" 
+                                          Orientation="Horizontal"
+                                          Position="0"
+                                          InterPageSpacing="0" 
+                                          ShowIndicators="True"
+                                          IndicatorsShape="Square"
+                                          IndicatorsTintColor="{StaticResource PageBackgroundColor}"
+                                          CurrentPageIndicatorTintColor="{StaticResource MenuTextBlueColor}"
+                                          ShowArrows="False"
+                                          AnimateTransition="True"
+                                          ArrowsTintColor="Aqua"
+                                          BackgroundColor="#F7F7F7">
+                    <carousel:CarouselViewControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid Padding="50">
+                                    <Image x:Name="background" 
+                                       Source="{Binding ImageUrl}" 
+                                       Aspect="AspectFit"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center"
+                                       />
+                                </Grid>
+                                <Grid Padding="20,10" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" RowSpacing="0">
+                                    <Label Grid.Row="0" Grid.Column="0" Text="{Binding Title}"  HorizontalOptions="StartAndExpand" FontSize="16" FontFamily="{StaticResource BoldFont}" TextColor="#16A7E0"/>
+                                    <Label Grid.Row="1" Grid.Column="0" Text="{Binding Subtitle}"  HorizontalOptions="StartAndExpand" FontSize="13" FontFamily="{StaticResource RegularFont}" TextColor="Gray"/>
+                                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding Text}" HorizontalOptions="End" FontSize="14" FontFamily="{StaticResource RegularFont}" TextColor="Gray"/>
+                                </Grid>
+                            </Grid>
+                        </DataTemplate>
+                    </carousel:CarouselViewControl.ItemTemplate>
+                </carousel:CarouselViewControl>
+                <ScrollView  Grid.Row="1" Grid.Column="0">
+                    <Grid Grid.Column="0" Grid.Row="1" RowSpacing="0" ColumnSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="Start" BackgroundColor="White">
+                        <Grid Padding="20,15" RowSpacing="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="1"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="1"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="1"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="1"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="1"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="1"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Grid.Row="0" Grid.Column="0" TextColor="#8B8B8B"
+                       >
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span FontFamily="{StaticResource BoldFont}" Text="Color : " FontSize="Small"/>
+                                        <Span Text="Royal Blue" FontFamily="{StaticResource RegularFont}" FontSize="14"/>
+                                        <!--<Span Text="default, " Style="{DynamicResource BodyStyle}">
+                                    <Span.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding .}" />
+                                    </Span.GestureRecognizers>
+                                </Span>
+                                <Span Text="italic small." FontAttributes="Italic" FontSize="Small" />-->
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <!--<ImageButton Grid.Row="0" Grid.Column="1" Source="{StaticResource yes}" BackgroundColor="Transparent"/>-->
+                            <BoxView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="1" BackgroundColor="#F3F3F3"/>
+                            <Label Grid.Row="2" Grid.Column="0" TextColor="#8B8B8B" 
+                       >
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span FontFamily="{StaticResource BoldFont}" Text="Size : " FontSize="Small"/>
+                                        <Span Text="8" FontFamily="{StaticResource RegularFont}" FontSize="14"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <!--<ImageButton Grid.Row="2" Grid.Column="1" Source="{StaticResource no}" BackgroundColor="Transparent"/>-->
+
+                            <BoxView Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="1" BackgroundColor="#F3F3F3"/>
+                            <Label Grid.Row="4" Grid.Column="0" TextColor="#8B8B8B" 
+                           
+                       >
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span FontFamily="{StaticResource BoldFont}" Text="Price : " FontSize="Small"/>
+                                        <Span Text="&#36;25.00(Inclusive of all taxes)" FontFamily="{StaticResource RegularFont}" FontSize="14"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label Grid.Row="4" Grid.Column="1" Text="Details" TextColor="#16A7E0" FontSize="Small" FontFamily="{StaticResource BoldFont}" BackgroundColor="Transparent"/>
+
+
+                            <BoxView Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="1" BackgroundColor="#F3F3F3"/>
+                            <BoxView Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="1" BackgroundColor="#F3F3F3"/>
+                            <BoxView Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="1" BackgroundColor="#F3F3F3"/>
+                            <ins:CollapsibleControl  Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" 
+                                             FirstText="Discription" 
+                                             SecondText="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the" 
+                                             Image="{StaticResource darrow}"/>
+                            <ins:CollapsibleControl  Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" 
+                                             FirstText="Features and Details" 
+                                             SecondText="Lorem Ipsum is simply dummy text of the printing and typesetting industry" 
+                                             Image="{StaticResource darrow}"/>
+                            <ins:CollapsibleControl  Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" 
+                                             FirstText="Reviews" 
+                                                                                          SecondText="Lorem Ipsum is simply dummy text of the printing and typesetting industry" 
+                                             Image="{StaticResource darrow}"/>
+                            <BoxView Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="1" BackgroundColor="#F3F3F3"/>
+                            <Grid Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="2" 
+                          RowSpacing="12" BackgroundColor="White"
+                          Padding="20">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Button Grid.Row="0" Grid.Column="0" Text="SEND GFT" 
+                                Style="{StaticResource ButtonDefault}"
+                                HeightRequest="45" FontSize="14"
+                         />
+                                <Button Grid.Row="1" Grid.Column="0" Text="ADD TO MY WISHLIST" 
+                                Style="{StaticResource ButtonDefault}"
+                                HeightRequest="45" FontSize="14"
+                                TextColor="Gray" BackgroundColor="#E6E6E6"
+             />
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </ScrollView>
+            </Grid>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

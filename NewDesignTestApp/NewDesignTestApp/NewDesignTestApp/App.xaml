@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converter="clr-namespace:NewDesignTestApp.AnimationTrigger"
+             x:Class="NewDesignTestApp.App">
+    <Application.Resources>
+        <OnPlatform x:Key="RegularFont" x:TypeArguments="x:String" Android="Lato-Regular.ttf#Lato-Regular" iOS="Lato-Regular"/>
+
+        <OnPlatform x:Key="BoldFont" x:TypeArguments="x:String" Android="Lato-Bold.ttf#Lato-Bold" iOS="Lato-Bold"/>
+
+        <OnPlatform x:Key="LightFont" x:TypeArguments="x:String" Android="Lato-Light.ttf#Lato-Light" iOS="Lato-Light"/>
+
+        <Color x:Key="BaseThemeColor">#0080b1</Color>
+        <Color x:Key="BaseTitleColor">#009fde</Color>
+        <Color x:Key="ThemeGrayColor">Gray</Color>
+        <Color x:Key="ThemeLightGrayColor">#676767</Color>
+        <Color x:Key="ThemeBaseDarkColor">#441f18</Color>
+        <Color x:Key="PageBackgroundColor">White</Color>
+        <Color x:Key="MenuBackgroundColor">#4C86BC</Color>
+        <Color x:Key="MenuTextColor">#ffffff</Color>
+        <Color x:Key="MenuTextBlueColor">#16a7e0</Color>
+        <Color x:Key="HeaderColorBlue">#00a1e1</Color>
+        <Color x:Key="EntryBorderColor">
+            <x:Arguments>
+                <x:Double>248</x:Double>
+                <x:Double>248</x:Double>
+                <x:Double>248</x:Double>
+                <x:Double>0.75</x:Double>
+            </x:Arguments>
+        </Color>
+        
+        <Style x:Key="navBarTitle" TargetType="Label">
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="HorizontalTextAlignment" Value="Center" />
+            <Setter Property="VerticalTextAlignment" Value="Center" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="FontSize" Value="Medium" />
+        </Style>
+ 
+
+        <Style x:Key="menuImage" TargetType="Image">
+            <Setter Property="HeightRequest" Value="25" />
+            <Setter Property="WidthRequest" Value="25" />
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+            <Setter Property="Source" Value="menu.png" />
+        </Style>
+
+        <FileImageSource  x:Key="back" File ="backarrow_white.png"/>
+        <FileImageSource  x:Key="search" File ="search.png"/>
+        <FileImageSource  x:Key="setting" File ="setting.png"/>
+        <FileImageSource  x:Key="favorite" File ="favorite.png"/>
+        <FileImageSource  x:Key="unfavorite" File ="unfavorite.png"/>
+        <FileImageSource  x:Key="share" File ="share.png"/>
+        <FileImageSource  x:Key="addgftd" File ="add_gftd.png"/>
+
+        <FileImageSource  x:Key="yes" File ="yes.png"/>
+        <FileImageSource  x:Key="no" File ="no.png"/>
+        <FileImageSource  x:Key="darrow" File ="downarrow.png"/>
+        <FileImageSource  x:Key="uarrow" File ="uparrow.png"/>
+
+
+        <converter:IsLikeConverter x:Key="InverseBool" />
+
+
+        <!-- Labels -->
+        <Style x:Key="LabelLargeGray" TargetType="Label">
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="TextColor" Value="{StaticResource ThemeGrayColor}"/>
+            <Setter Property="FontFamily" Value="{StaticResource RegularFont}"/>
+        </Style>
+
+        <Style x:Key="LabelLargeBlue" TargetType="Label">
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+            <Setter Property="FontSize" Value="Large"/>
+            <Setter Property="TextColor" Value="{StaticResource BaseTitleColor}"/>
+            <Setter Property="FontFamily" Value="{StaticResource BoldFont}"/>
+        </Style>
+
+        <Style x:Key="LabelMiddleGray" TargetType="Label">
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="TextColor" Value="{StaticResource ThemeLightGrayColor}"/>
+            <Setter Property="FontFamily" Value="{StaticResource RegularFont}"/>
+        </Style>
+
+        <Style x:Key="LabelMenu" TargetType="Label">
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="TextColor" Value="{StaticResource MenuTextColor}"/>
+            <Setter Property="FontFamily" Value="{StaticResource BoldFont}"/>
+
+        </Style>
+
+        <Style x:Key="ButtonTransparentDefault" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+            <Setter Property="BorderWidth" Value="0"/>
+            <Setter Property="TextColor" Value="{StaticResource BaseThemeColor}"/>
+            <Setter Property="CornerRadius" Value="5"/>
+            <Setter Property="HeightRequest" Value="40"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontFamily" Value="{StaticResource BoldFont}"/>
+        </Style>
+        <Style x:Key="ButtonDefault" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="{StaticResource BaseThemeColor}"/>
+            <Setter Property="BorderWidth" Value="0"/>
+            <Setter Property="TextColor" Value="White"/>
+            <Setter Property="CornerRadius" Value="5"/>
+            <Setter Property="HeightRequest" Value="50"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontFamily" Value="{StaticResource BoldFont}"/>
+        </Style>
+    </Application.Resources>
+</Application>

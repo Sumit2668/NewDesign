@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NewDesignTestApp.MyWishesView"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:behaviors="clr-namespace:NewDesignTestApp.AnimationTrigger"
+             ios:Page.UseSafeArea="True"
+             NavigationPage.HasNavigationBar="False"
+             >
+    <ContentPage.Content>
+
+        <Grid HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand" RowSpacing="0" ColumnSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+                <RowDefinition Height="*" />
+                <!--<RowDefinition Height="65" />-->
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Row="0" Grid.Column="0" Padding="10,0"
+                  HorizontalOptions="FillAndExpand" BackgroundColor="#14B7F8" 
+                  VerticalOptions="StartAndExpand" RowSpacing="0" ColumnSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="30"/>
+                </Grid.ColumnDefinitions>
+
+                <Image Grid.Row="0" Grid.Column="0" Source="{StaticResource back}" Style="{StaticResource menuImage}">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer  />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label Grid.Row="0" Grid.Column="1" Text="MY WISHES"  Style="{StaticResource navBarTitle}"/>
+            </Grid>
+
+            <StackLayout Grid.Row="1" Grid.Column="0" BackgroundColor="#F9F9F9" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand"  Padding="0" Spacing="0">
+                <!--Search Box-->
+                <Grid BackgroundColor="#F9F9F9" ColumnSpacing="2" RowSpacing="0" Padding="12,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Row="0" Grid.Column="0" Source="{StaticResource search}" Aspect="AspectFit" HorizontalOptions="Start" />
+                    <Image Grid.Row="0" Grid.Column="2"  Source="{StaticResource setting}" Aspect="AspectFit" HorizontalOptions="End" />
+                    <Entry Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" x:Name="searchBar"
+                       Margin="20,0" HeightRequest="55"
+                       Placeholder="Search" ReturnCommand="{Binding FilterCommand}"
+                       ReturnCommandParameter="{Binding Source={x:Reference searchBar}, Path=Text}"
+                       HorizontalOptions="FillAndExpand"/>
+                </Grid>
+                
+                <Grid BackgroundColor="#F9F9F9" RowSpacing="0" Padding="5,0" HorizontalOptions="FillAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Row="0" Grid.Column="0" ImageSource="{StaticResource share}" Text="Share Wishlist" TextColor="#14B7F8" BackgroundColor="Transparent" HorizontalOptions="StartAndExpand" />
+                    <Button Grid.Row="0" Grid.Column="2"  ImageSource="{StaticResource addgftd}" Text="Add GFT" TextColor="#14B7F8" BackgroundColor="Transparent" HorizontalOptions="EndAndExpand" />
+                    
+                </Grid>
+                <CollectionView  ItemsSource="{Binding Stores}"
+                                 VerticalOptions="Center" 
+                                 HorizontalOptions="Center" 
+                                 BackgroundColor="#F9F9F9"
+                                 EmptyView="No items match your filter.">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" Span="2"/>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Padding="10">
+                                <Frame BorderColor="LightGray" CornerRadius="15" HasShadow="True" Padding="5">
+                                    <Grid Padding="5" ColumnSpacing="0" RowSpacing="0" Margin="2">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="130"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+
+                                        <Image  Grid.Row="0" 
+                                               Source="{StaticResource favorite}"
+                                               Aspect="AspectFit" 
+                                               HorizontalOptions="End" >
+                                            <Image.Behaviors>
+                                                <behaviors:ViewTappedButtonBehavior Command="{Binding OnLoginCommand}"
+                                                        AnimationType="Scale"/>
+                                            </Image.Behaviors>
+                                        </Image>
+
+                                        <Image Grid.Row="1" Source="{Binding ImageUrl}" Aspect="Fill"/>
+                                        <Label Grid.Row="2" Text="{Binding Title}" TextColor="#14B7F8" HorizontalTextAlignment="Center" VerticalOptions="CenterAndExpand"/>
+                                        <Label Grid.Row="3" Text="{Binding Price, StringFormat='&#36;{0:N}'}}" HorizontalTextAlignment="Center" VerticalOptions="CenterAndExpand" FontAttributes="Bold"/>
+
+                                    </Grid>
+                                </Frame>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

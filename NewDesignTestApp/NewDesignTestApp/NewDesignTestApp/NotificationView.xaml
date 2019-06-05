@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NewDesignTestApp.NotificationView"
+                          xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:behaviors="clr-namespace:NewDesignTestApp.AnimationTrigger"
+             ios:Page.UseSafeArea="True"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="White">
+    <ContentPage.Content>
+
+        <Grid HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand" RowSpacing="0" ColumnSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Row="0" Grid.Column="0" Padding="10,0"
+                  HorizontalOptions="FillAndExpand" BackgroundColor="#14B7F8" 
+                  VerticalOptions="StartAndExpand" RowSpacing="0" ColumnSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="30"/>
+                </Grid.ColumnDefinitions>
+                <Image Grid.Row="0" Grid.Column="0" Source="{StaticResource back}" Style="{StaticResource menuImage}">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer  />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label Grid.Row="0" Grid.Column="1" Text="Notification"  Style="{StaticResource navBarTitle}"/>
+            </Grid>
+
+            <StackLayout Grid.Row="1" Grid.Column="0">
+                <Grid Padding="20" RowSpacing="15">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="1"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0" 
+                       TextColor="#8B8B8B" FontSize="Small"
+                       FontFamily="{StaticResource BoldFont}"
+                       Text="Gift Received"/>
+                    <ImageButton Grid.Row="0" Grid.Column="1" Source="{StaticResource yes}" BackgroundColor="Transparent">
+                        <ImageButton.Triggers>
+                            <EventTrigger Event="Clicked">
+                                <behaviors:ExpandButtonTriggerAction />
+                            </EventTrigger>
+                        </ImageButton.Triggers>
+                    </ImageButton>
+                    <BoxView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="1" BackgroundColor="#F3F3F3"/>
+                    <Label Grid.Row="2" Grid.Column="0" TextColor="#8B8B8B" FontSize="Small"
+                       FontFamily="{StaticResource BoldFont}" Text="Thank you message received"/>
+                    <ImageButton Grid.Row="2" Grid.Column="1" Source="{StaticResource no}" BackgroundColor="Transparent">
+                        <ImageButton.Triggers>
+                            <EventTrigger Event="Clicked">
+                                <behaviors:ExpandButtonTriggerAction />
+                            </EventTrigger>
+                        </ImageButton.Triggers>
+                    </ImageButton>
+                </Grid>
+            </StackLayout>
+        </Grid>
+
+    </ContentPage.Content>
+</ContentPage>

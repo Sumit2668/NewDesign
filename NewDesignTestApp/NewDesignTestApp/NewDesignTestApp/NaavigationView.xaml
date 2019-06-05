@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:NewDesignTestApp.CustomCell"
+             x:Class="NewDesignTestApp.NaavigationView">
+    <ContentPage.Content>
+        <Grid BackgroundColor="Transparent">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="200" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <StackLayout Grid.Column="0" Grid.Row="1">
+                <Button x:Name="Wishes" Text="Wishes" Clicked="Wishes_Clicked"/>
+                <Button x:Name="Stores" Text="Store" Clicked="Stores_Clicked"/>
+                <Button x:Name="CustWishes" Text="CustWishes" Clicked="CustWishes_Clicked"/>
+                <Button x:Name="notification" Text="Notification" Clicked="Notification_Clicked"/>
+                <Button x:Name="itemdetails" Text="Details" Clicked="Itemdetails_Clicked"/>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
